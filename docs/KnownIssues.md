@@ -100,3 +100,16 @@ Last Updated: May 2, 2026
 *(Add here as levels are built)*
 ```
 
+### DEFERRED: Rapid Press for  Chests
+- **Feature:** God of War style rapid button mashing 
+  to open chests mid-combat.
+- **Affects:** BP_ChestBase — ChestType SILVER only
+- **Deferred To:** Polish pass after all levels built
+- **Design Notes:**
+  - RequiredPresses: 8
+  - PressTimeWindow: 3.0 seconds
+  - Progress drains if player stops pressing
+  - Enemies can interrupt during press sequence
+  - Progress bar widget needed
+- **Status:** Not started
+
