@@ -23,16 +23,8 @@ https://raw.githubusercontent.com/kratos0/GodOfRuin/main/docs/FCS_SystemReferenc
 https://raw.githubusercontent.com/kratos0/GodOfRuin/main/docs/KnownIssues.md
 https://raw.githubusercontent.com/kratos0/GodOfRuin/main/docs/FCS_Blueprints/README.md
 
-Summarize in 5 bullet points what you know about 
-FCS before we start building.
 Confirm you read all 3 files successfully.
-Run auto state check:
-- List levels in /GodOfRuin/Levels/
-- List imported Paragon characters
-- Does BP_ChestBase exist and compile clean?
-- Does BP_LevelEndTrigger exist?
-- Does L_Template exist?
-- Any broken Blueprint references?
+
 
 Do not start any build work until docs confirmed 
 and state check complete.
