@@ -23,5 +23,10 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Content — 15 GB of binary assets, requires git-lfs before tracking
+# Uncomment the line below ONLY after running: brew install git-lfs && git lfs install
+# Then add: git lfs track "*.uasset" "*.umap" "*.udk"
+Content/
+
 # Claude Code
 .claude/
