@@ -142,3 +142,11 @@ add two GoR-only fields to the save (or extend `PlayerSaveData` struct):
 - **Grapple Component grab-success event** — needs a separate audit pass.
 - **`CombatStatusComp` "in combat" boolean name** — verify on next audit (the variable is referenced from `DefensiveComponent` as `CombatStatusComp` of type `CombatStatusComponent_C`, but we haven't read the inner state field name).
 - Replication strategy: server-authoritative spirit (current default assumption) vs client-predicted (only matters if multiplayer is in scope; GoR is single-player so server-auth is fine).
+
+---
+
+## NOTE — FCS HEALTH/STAMINA VAR ACCESS (2026-05-10)
+FCS health/stamina variable names not accessible via Python reflection.
+Defer to Session 3 live BP editor audit.
+Spirit system uses its own `CurrentSpirit` / `MaxSpirit` float variables
+on `BP_GodOfRuin_Player` child BP — no FCS health var access needed.

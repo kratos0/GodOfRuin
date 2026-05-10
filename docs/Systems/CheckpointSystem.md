@@ -124,3 +124,9 @@ appends to `CheckpointsUsed`, and flips `SpawnOnLevelStart` to true.
   total — small enough to trace in one read pass.)*
 - What clears `CheckpointsUsed` between runs? Probably level transition
   resets it — verify before L8 → L1 New Game flow.
+
+---
+
+## ENEMY DEATH HOOK (for EXP orbs)
+Enemy death event: `Death` custom event on `BP_AI_Parent`.
+EXP orb spawn hooks here. Confirmed from `AI.md` documentation.
