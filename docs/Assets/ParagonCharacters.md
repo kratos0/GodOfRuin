@@ -8,8 +8,8 @@
 
 ```markdown
 # Paragon Character Assets
-## Gods of Ruin
-Last Updated: May 2, 2026
+## God of Ruin
+Last Updated: 2026-05-10
 
 ---
 
@@ -47,7 +47,7 @@ Report any failures.
 
 ---
 
-## SESSION 4 IMPORTS — Khaimera + Grux
+## SESSION 4 IMPORTS — Khaimera
 
 ### Khaimera
 - **Import Status:** ⬜ Not started
@@ -59,19 +59,9 @@ Report any failures.
 - **Test Result:** *(fill in after test)*
 - **Issues:** *(fill in)*
 
-### Grux
-- **Import Status:** ⬜ Not started
-- **Import Path:** /Game/Characters/Paragon/Grux/
-- **Source Folder:** *(fill in)*
-- **Skeleton Set:** ⬜
-- **Animations Working:** ⬜
-- **BP_AI_Parent Child Created:** ⬜ (name: BP_Enemy_Grux)
-- **Test Result:** *(fill in after test)*
-- **Issues:** *(fill in)*
-
 ---
 
-## SESSION 5 IMPORTS — Kwang
+## SESSION 5 IMPORTS — Kwang + Greystone
 
 ### Kwang
 - **Import Status:** ⬜ Not started
@@ -82,6 +72,17 @@ Report any failures.
 - **BP_AI_Parent Child Created:** ⬜ (name: BP_Enemy_Kwang)
 - **Test Result:** *(fill in after test)*
 - **Issues:** *(fill in)*
+
+### Greystone (L2 boss — replaces Sevarog at L2)
+- **Import Status:** ⬜ Not started
+- **Import Path:** /Game/Characters/Paragon/Greystone/
+- **Source Folder:** *(fill in)*
+- **Skeleton Set:** ⬜
+- **Animations Working:** ⬜
+- **BP_AI_Parent Child Created:** ⬜ (name: BP_Enemy_Greystone)
+- **Test Result:** *(fill in after test)*
+- **Issues:** *(fill in)*
+- **Note:** Sevarog mesh is reserved for L8 (The Ruined One). Greystone replaces it as the L2 boss.
 
 ---
 
@@ -135,7 +136,14 @@ Report any failures.
 
 ---
 
-## SESSION 8 IMPORTS — Aurora + Kallari + Shinbi + Serath
+## SESSION 8 IMPORTS — Aurora + Kallari + Serath
+
+> **Note:** Shinbi is the **player character**, not an enemy import. The L5
+> "Shinbi-clones" wave reuses the player mesh with a corrupted material tint —
+> no separate import needed. See `EnemyRoster.md` → L5.
+>
+> **Sevarog is in Boss AI Toolkit already** — no import. Reserved for L8
+> (The Ruined One).
 
 ### Aurora
 - **Import Status:** ⬜ Not started
@@ -151,14 +159,6 @@ Report any failures.
 - **Skeleton Set:** ⬜
 - **Animations Working:** ⬜
 - **BP_AI_Parent Child Created:** ⬜ (name: BP_Enemy_Kallari)
-- **Test Result:** *(fill in after test)*
-
-### Shinbi
-- **Import Status:** ⬜ Not started
-- **Import Path:** /Game/Characters/Paragon/Shinbi/
-- **Skeleton Set:** ⬜
-- **Animations Working:** ⬜
-- **BP_AI_Parent Child Created:** ⬜ (name: BP_Enemy_Shinbi)
 - **Test Result:** *(fill in after test)*
 
 ### Serath
@@ -179,8 +179,8 @@ Report any failures.
 | Character | Idle | Walk/Run | Attack | Death | Special | Notes |
 |-----------|------|----------|--------|-------|---------|-------|
 | Khaimera | | | | | Leap attack | |
-| Grux | | | | | Charge | |
 | Kwang | | | | | | |
+| Greystone | | | | | Sword combo | L2 boss |
 | Crunch | | | | | | |
 | Morigesh | | | | | Magic cast | |
 | Steel | | | | | Shield bash | |
@@ -188,6 +188,5 @@ Report any failures.
 | Feng Mao | | | | | Dash | |
 | Aurora | | | | | Ice magic | |
 | Kallari | | | | | Stealth | |
-| Shinbi | | | | | Spirit summon | |
 | Serath | | | | | Aerial | |
 ```

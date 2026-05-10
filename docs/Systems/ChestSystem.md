@@ -9,7 +9,7 @@
 ```markdown
 # Chest System
 ## Status: In Progress
-## Last Updated: May 2, 2026
+## Last Updated: 2026-05-10
 ## Session: 1
 
 ---
@@ -54,10 +54,14 @@ Actor parent = no interact prompt, no E key trigger.
 
 | ChestType Value | Type | Reward | Notes |
 |----------------|------|--------|-------|
-| 0 | GOLD | XP burst | `EquipmentComponent → ApplyXPIncrease(XPAmount)` |
-| 1 | SILVER | Full heal | `BuffComponent → Heal` (heals to full) |
-| 2 | STAT | Stat upgrade | `EquipmentComponent → IncreaseLevelUpStats` |
-| 3 | LEGENDARY | Weapon unlock | `BP_WeaponHotkeys.UnlockSlot(WeaponSlot)` + 0.3s slow-mo |
+| 0 | GOLD | EXP orb burst | Spawns auto-collect orbs near chest; orbs feed `EquipmentComponent → ApplyXPIncrease` |
+| 1 | SILVER | Full health restore | `BuffComponent → Heal` — heals to full only, no partial heal option |
+| 2 | STAT | Permanent stat upgrade | `EquipmentComponent → IncreaseLevelUpStats` |
+| 3 | LEGENDARY | Greatsword unlock | **L4 Zone E only** — `BP_WeaponHotkeys.UnlockSlot(2)` + 0.3s slow-mo + toast |
+
+**Removed from earlier design:** Named God-of-War-themed weapons (Axe of Sparta,
+Apollo's Bow, Blade of Olympus, Divine Spear). The Greatsword is the only
+weapon unlock — see `docs/Systems/GreatswordSystem.md`.
 
 ---
 
@@ -76,18 +80,22 @@ All variables: Edit Anywhere + Expose on Spawn — configurable per instance in 
 
 ## CHEST PLACEMENT PER LEVEL
 
+One chest in each level's Zone E (the "Breather"). Type rotates between Gold,
+Silver, and Stat across levels — Legendary appears **only at L4**.
+
 | Level | Zone | ChestType | Reward |
 |-------|------|-----------|--------|
-| L1 | Arena 1 clear | GOLD | 1500 XP |
-| L1 | Zone 3 traversal | SILVER | Full heal |
-| L1 | After Khaimera | LEGENDARY | Axe of Sparta (slot 2) |
-| L2 | Arena 1 clear | GOLD | 1500 XP |
-| L2 | After Sevarog | STAT | HEALTH +25 |
-| L3 | After Rampage | LEGENDARY | Apollo's Bow (slot 3) |
-| L4 | Wave 1 clear | GOLD | 2000 XP |
-| L4 | Wave 3 clear | STAT | ATTACK +10% |
-| L5 | Statue puzzle | LEGENDARY | Blade of Olympus (slot 1 upgrade) |
-| Boss | Post-boss | LEGENDARY | Divine Spear (slot 5) |
+| L1 | Zone E | GOLD | EXP orb burst |
+| L2 | Zone E | SILVER | Full heal |
+| L3 | Zone E | STAT | +1 stat point (any) |
+| **L4** | **Zone E** | **LEGENDARY** | **Greatsword unlock (slot 2)** |
+| L5 | Zone E | GOLD | EXP orb burst |
+| L6 | Zone E | SILVER | Full heal |
+| L7 | Zone E | STAT | +1 stat point (any) |
+| L8 | (none) | — | Pure boss level, no chest |
+
+**Legendary chest is L4-only** — gating the Greatsword unlock. All other
+levels rotate Gold/Silver/Stat to avoid telegraphing the L4 reward.
 
 ---
 
