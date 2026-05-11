@@ -207,3 +207,24 @@ The following assets exist in this folder but are excluded from documentation:
 | I_SpawnMarker | Interface on BP_AISpawnMarker — document if custom markers are built |
 | EQS_AroundTarget | EQS query for BT strafe logic — internal FCS |
 | BP_AI-Jump-Link | NavLink proxy — place in levels for AI jump points; no subclassing needed |
+
+---
+
+## E_StatBuilds — Stat Preset Enum
+Path: /Game/FlexibleCombatSystem/Enumerations/AI/E_StatBuilds
+
+FCS uses preset stat builds instead of manual HP/damage values.
+Set this enum on each enemy child BP via AI Setup Data → S_AI-StatData.
+
+| Index | Internal Name | Display Name | GodOfRuin Use |
+|-------|--------------|--------------|---------------|
+| 0 | NewEnumerator0 | Tank (Defence Focused) | Steel, Narbash |
+| 1 | NewEnumerator1 | Warrior (Attack Focused) | FCS Soldiers, Kwang, Crunch |
+| 2 | NewEnumerator2 | Rogue (Crit Attack Focused) | Kallari, Feng Mao |
+| 3 | NewEnumerator3 | Ranger (Range Attack Focus) | Aurora, Morigesh, FCS Ranged |
+| 4 | NewEnumerator4 | Mage (Spell Damage Focus) | NOT USED in GodOfRuin |
+| 5 | NewEnumerator5 | Default (Mixed) | Khaimera, Shinbi clones |
+| 6 | NewEnumerator6 | Duelist (Attack/Crit Mix) | Serath, Greystone |
+
+Boss tier enemies configured via Boss AI Toolkit — not E_StatBuilds.
+Rampage, Terra, Countess, The Ruined One use Boss AI phase system.
