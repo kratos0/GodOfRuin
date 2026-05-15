@@ -1,0 +1,365 @@
+# GodOfRuin — Claude Code Workflow Guide
+## For NeoStack Agent Chat Sessions
+Last Updated: May 3, 2026
+
+---
+
+## THE GOLDEN RULE
+
+**When in doubt: STOP and ask Eric.**
+A 2-minute pause is always better than 20 minutes going in circles.
+A blocked task reported immediately costs $0.01.
+A task that loops for 20 minutes costs $2-5 and may break things.
+
+---
+
+## SESSION START — REQUIRED EVERY SESSION
+
+Copy and paste this at the start of EVERY session:
+
+```
+Read these before starting today's session:
+https://raw.githubusercontent.com/kratos0/GodOfRuin/main/docs/FCS_SystemReference.md
+https://raw.githubusercontent.com/kratos0/GodOfRuin/main/docs/KnownIssues.md
+https://raw.githubusercontent.com/kratos0/GodOfRuin/main/docs/FCS_Blueprints/README.md
+
+Confirm you read all 3 files successfully.
+
+
+Do not start any build work until docs confirmed 
+and state check complete.
+```
+
+---
+
+## ESCALATION SYSTEM
+
+Every task has three states. Use them strictly.
+
+### GREEN — Proceed Normally
+Conditions:
+- Task completes in under 5 tool calls
+- Compile succeeds first or second attempt
+- Asset found where docs say it should be
+- Behavior matches documented expectations
+
+Action: Continue to next step. Report progress.
+
+---
+
+### YELLOW — Stop and Report to Eric
+
+Conditions:
+- Task exceeds 5 tool calls without completion
+- Same compile error appears twice
+- Asset not found where docs say it should be
+- Any null reference error on a variable
+- Behavior doesn't match what docs describe
+- Uncertainty about which approach to take
+- Any system not documented in GitHub docs
+
+Action: STOP immediately. Report using this format:
+
+```
+BLOCKED: [task name]
+REASON: [exact error message or issue description]
+ATTEMPTED: [exactly what was tried — tool calls made]
+DOCS SAY: [what the documentation says should happen]
+REALITY: [what is actually happening]
+OPTIONS:
+  A) [approach 1 — pros and cons]
+  B) [approach 2 — pros and cons]
+  C) [approach 3 — pros and cons]
+RECOMMENDATION: [which option and why]
+NEED FROM ERIC: [specific decision or information needed]
+```
+
+Do not attempt another fix. Wait for Eric response.
+
+---
+
+### RED — Stop Immediately, Eric Must Decide
+
+Conditions:
+- UE5 crashes
+- Error never seen before with no clear cause
+- Any change that would affect BP_PlayerCharacter core
+- Any change that would affect BP_AI_Parent core
+- Any prompt that would delete a working asset
+- Compile error after 2 attempts with different approaches
+- Any change to FCS save system core functions
+- Cost seems to be escalating rapidly with no progress
+
+Action: STOP all work immediately. Report using this format:
+
+```
+STOPPED: [task name]
+REASON: [exactly what happened]
+LAST ACTION: [the last thing that was done]
+PROJECT STATE: [is project still functional? PIE works?]
+ACTION NEEDED: Eric must decide before any further work.
+```
+
+Do not touch anything until Eric responds.
+
+---
+
+## BUILD RULES — Every Task
+
+### Rule 1: Read Before Build
+Before building anything new:
+1. Check if it exists in GitHub docs
+2. If documented: follow the documented pattern exactly
+3. If NOT documented: do read-only audit first
+4. Report audit findings to Eric
+5. Wait for go-ahead before writing a single node
+
+### Rule 2: State Your Plan First
+Before writing any Blueprint nodes:
+```
+My plan for [task]:
+1. [exact node 1]
+2. [exact node 2]
+3. [exact node 3]
+Parent class: [parent]
+Path: [full /Game/ path]
+Compile strategy: [what I'll do if compile fails]
+```
+Wait for Eric to say "go ahead" before building.
+
+### Rule 3: One Compile Attempt Per Approach
+- Compile once
+- If it fails: report the exact error, stop
+- Do not attempt silent self-fixes
+- Do not try a different approach without telling Eric
+
+### Rule 4: Never Modify Core FCS
+These are off-limits without explicit Eric approval:
+- BP_PlayerCharacter core event graphs
+- BP_AI_Parent core event graphs
+- BP_SaveGame core variables
+- Any FCS widget without understanding its dependencies
+- Any FCS component that other Blueprints depend on
+
+### Rule 5: Test Before Moving On
+Every task has success criteria.
+Do not call a task complete until ALL criteria are met.
+Report each criterion result individually.
+
+---
+
+## TASK TEMPLATE
+
+Use this format for every build task:
+
+```
+TASK [N]: [Task Name]
+
+PRE-CHECK:
+- Relevant docs: [which GitHub doc to read first]
+- Existing assets: [check if already built]
+- Dependencies: [what must exist first]
+
+PLAN (state before building):
+[list every step]
+
+SUCCESS CRITERIA:
+1. [specific measurable outcome]
+2. [specific measurable outcome]
+3. [specific measurable outcome]
+
+ESCALATION:
+GREEN: all criteria met → report complete, move on
+YELLOW: any criteria fails → report which, stop
+RED: crash or data loss → stop immediately
+
+One compile attempt.
+Report each criterion result.
+Do not proceed to next task until Eric confirms.
+```
+
+---
+
+## KNOWN PROBLEM PATTERNS
+
+### Pattern: Silent Looping
+**Symptom:** No response for 10+ minutes, or many tool calls with no progress report.
+**Cause:** Claude Code hit an error and is trying to self-fix silently.
+**Fix:** Hit Stop. Send: "Report current state. What were you doing? What was the last error?"
+
+### Pattern: Wrong Parent Class
+**Symptom:** Compile error on variables that should be inherited.
+**Cause:** Blueprint created with wrong parent class.
+**Fix:** Delete asset. Recreate with correct parent. Check FCS_SystemReference.md for correct parent.
+
+### Pattern: Widget Crash
+**Symptom:** PIE crashes when a widget is spawned.
+**Cause:** Widget requires constructor params (WB_PopupHolder, ItemInfo struct, etc.)
+**Fix:** Check KnownIssues.md. Use PrintString as placeholder. Do not use FCS widgets without checking their construct event first.
+
+### Pattern: Null Reference Crash on Play
+**Symptom:** PIE crashes immediately on level load.
+**Cause:** Usually BP_Gate not assigned in level Details panel, or a direct object reference that's null.
+**Fix:** Check all direct object references in placed actors. Assign in Details panel.
+
+### Pattern: 404 on GitHub Docs
+**Symptom:** Claude Code reports doc URL returns 404.
+**Cause:** Filename case mismatch or file not committed yet.
+**Fix:** Check GitHub repo directly. Verify exact filename capitalization. Re-commit if missing.
+
+---
+
+## SESSION END CHECKLIST
+
+Send this at the end of EVERY session:
+
+```
+Session complete. Before I close UE5:
+
+1. BUILT TODAY:
+   List every Blueprint created or modified.
+   Full /Game/ path for each.
+
+2. VERIFIED WORKING:
+   List what was tested in PIE and confirmed working.
+
+3. OUTSTANDING ISSUES:
+   List any unresolved blockers or known problems.
+
+4. GITHUB DOC UPDATES NEEDED:
+   What new information was discovered today?
+   Generate markdown updates for:
+   - FCS_SystemReference.md (new system info)
+   - KnownIssues.md (new bugs or fixes)
+   - Systems/ docs (if new system was built)
+   - FCS_Blueprints/ docs (if new BPs discovered)
+
+5. NEXT SESSION TASK 1:
+   What is the first task next session?
+   Any prep needed before next session?
+
+Format as a session report I can save and commit.
+```
+
+---
+
+## DOCUMENTATION UPDATE RULES
+
+When Claude Code discovers something new about FCS:
+
+### Add to FCS_SystemReference.md:
+- New system behavior discovered
+- New exact function names found
+- New component names found
+- Corrections to existing documentation
+
+### Add to KnownIssues.md:
+- Any crash and its fix
+- Any workaround for broken functionality
+- Any FCS behavior that differs from expectation
+- Format: always add newest issues at TOP of file
+
+### Add to FCS_Blueprints/[Folder].md:
+- New asset discovered in that folder
+- Deeper understanding of existing asset
+- GodOfRuin relevance updated
+
+### Create new Systems/ doc when:
+- A new custom Blueprint is built
+- A new FCS system is extended
+- A new integration pattern is established
+
+---
+
+## PARAGON CHARACTER IMPORT RULES
+
+Never deviate from these:
+
+1. Max 2-3 characters per session
+2. Always use FCS Manny skeleton:
+   `/Game/FlexibleCombatSystem/GASP/UEFN-Manny/Meshes/SK_UEFN_Mannequin.SK_UEFN_Mannequin`
+3. Import at START of session before building
+4. Verify animations work before building level content
+5. Create BP_AI_Parent child immediately after import
+6. Test in PIE before marking import complete
+7. Update docs/Assets/ParagonCharacters.md after each import
+
+If import crashes UE5: this is RED escalation.
+Stop. Do not retry. Report to Eric.
+
+---
+
+## COST AWARENESS
+
+Target cost per session: $3-5
+If a session exceeds $5 with no clear progress: STOP and reassess.
+
+High cost signals:
+- Looping on the same error repeatedly
+- Reading too many full node graphs
+- No clear direction on what to build
+
+Low cost signals:
+- Docs read upfront
+- Plan stated before building
+- Clear escalation when blocked
+- Short focused tasks
+
+---
+
+## QUICK REFERENCE — Key Asset Paths
+
+```
+FCS Content Root:
+/Game/FlexibleCombatSystem/
+
+FCS Manny Skeleton:
+/Game/FlexibleCombatSystem/GASP/UEFN-Manny/Meshes/SK_UEFN_Mannequin.SK_UEFN_Mannequin
+
+Player:
+/Game/FlexibleCombatSystem/Blueprints/BP_PlayerCharacter
+
+Enemy Base:
+/Game/FlexibleCombatSystem/Blueprints/AI/BP_AI_Parent
+
+Save:
+/Game/FlexibleCombatSystem/Blueprints/BP_SaveGame
+
+HUD:
+/Game/FlexibleCombatSystem/Blueprints/BP_PlayerHUD
+
+Arena Spawner:
+/Game/FlexibleCombatSystem/Blueprints/Miscellaneous/DemoLevels/BP_ArenaSpawner
+
+Arena Gate:
+/Game/FlexibleCombatSystem/Blueprints/Miscellaneous/DemoLevels/BP_ArenaGate
+
+GodOfRuin Custom BPs:
+/Game/FlexibleCombatSystem/Blueprints/GodOfRuin/
+```
+
+---
+
+## GITHUB DOCS INDEX
+
+| Document | Purpose | Update When |
+|----------|---------|-------------|
+| FCS_SystemReference.md | FCS system patterns + function names | New system discovered |
+| KnownIssues.md | Bugs, crashes, workarounds | Any crash or fix |
+| FCS_Blueprints/README.md | Master index of all FCS BPs | New folder documented |
+| FCS_Blueprints/AI.md | AI folder reference | New AI asset found |
+| FCS_Blueprints/Components.md | Components reference | New component found |
+| FCS_Blueprints/Items.md | Items + loot reference | New item BP found |
+| Systems/ChestSystem.md | BP_ChestBase docs | Chest system updated |
+| Systems/WaveSystem.md | Wave spawner docs | Wave system updated |
+| Characters/EnemyRoster.md | Enemy import tracking | Each import session |
+| Assets/ParagonCharacters.md | Paragon import status | Each import |
+| WorkflowGuide.md | This file | Process improvements |
+
+---
+
+## THE ONE RULE THAT SAVES EVERYTHING
+
+**Read the docs. State the plan. Get approval. Then build.**
+
+In that order. Every time. No exceptions.

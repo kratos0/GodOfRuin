@@ -1,0 +1,53 @@
+Begin Object Class=/Script/UnrealEd.EdGraphNode_Comment Name="EdGraphNode_Comment_273" ExportPath="/Script/UnrealEd.EdGraphNode_Comment'/Game/GrappleComponent/BP_GrappleComponent/GrappleComponent.GrappleComponent:EventGraph.EdGraphNode_Comment_273'"
+   CommentColor=(R=0.150000,G=0.150000,B=0.150000,A=1.000000)
+   bCommentBubbleVisible_InDetailsPanel=False
+   NodePosX=-32
+   NodePosY=-1056
+   NodeWidth=1840
+   NodeHeight=352
+   bCommentBubblePinned=False
+   bCommentBubbleVisible=False
+   NodeComment="Most users will be able to get started with the Grapple Component by doing the following:\r\n\r\n–\tConsulting the first section (pages 6 through 9) of the Documentation.\r\n–\tFollowing the tutorial on Installation, which can be found at the end of the documentation.\r\n–\tFollowing the tutorial on Implementation, which can be found at the end of the documentation.\r\n–\tFollowing the tutorial on Setting up a Grapple Sequence, which can be found at the end of the documentation.\r\n–\tConsulting the Event Graph of Object \'GrappleSequenceTutorial\' for more information and for links to commonly used Blueprint nodes.\r\n\r\nThe text in the documentation will link to other sections where necessary."
+   NodeGuid=211E5D09423DA0FC477F0E912C2CB19C
+End Object
+Begin Object Class=/Script/UnrealEd.EdGraphNode_Comment Name="EdGraphNode_Comment_278" ExportPath="/Script/UnrealEd.EdGraphNode_Comment'/Game/GrappleComponent/BP_GrappleComponent/GrappleComponent.GrappleComponent:EventGraph.EdGraphNode_Comment_278'"
+   CommentColor=(R=1.000000,G=0.974375,B=0.583333,A=1.000000)
+   FontSize=20
+   bCommentBubbleVisible_InDetailsPanel=False
+   bColorCommentBubble=True
+   CommentDepth=-7
+   NodePosX=-48
+   NodePosY=-1136
+   NodeWidth=1888
+   NodeHeight=480
+   bCommentBubblePinned=False
+   bCommentBubbleVisible=False
+   NodeComment="Getting Started"
+   NodeGuid=990DAABB41815760C8C883B16BB54622
+End Object
+Begin Object Class=/Script/UnrealEd.EdGraphNode_Comment Name="EdGraphNode_Comment_277" ExportPath="/Script/UnrealEd.EdGraphNode_Comment'/Game/GrappleComponent/BP_GrappleComponent/GrappleComponent.GrappleComponent:EventGraph.EdGraphNode_Comment_277'"
+   CommentColor=(R=0.150000,G=0.150000,B=0.150000,A=1.000000)
+   bCommentBubbleVisible_InDetailsPanel=False
+   NodePosX=-48
+   NodePosY=-1296
+   NodeWidth=1888
+   NodeHeight=112
+   bCommentBubblePinned=False
+   bCommentBubbleVisible=False
+   NodeComment="The Grapple Component is an Actor Component which can be added to any Pawn. The Grapple Component’s main functionality relates to Grapple Sequences. It allows other Blueprints to control the Grapple Sequence, and acts as a proxy that represents its owning Actor in the Grapple Sequence."
+   NodeGuid=B55F48A34D302D37FCF3B391D8BA6171
+End Object
+Begin Object Class=/Script/UnrealEd.EdGraphNode_Comment Name="EdGraphNode_Comment_276" ExportPath="/Script/UnrealEd.EdGraphNode_Comment'/Game/GrappleComponent/BP_GrappleComponent/GrappleComponent.GrappleComponent:EventGraph.EdGraphNode_Comment_276'"
+   FontSize=80
+   bCommentBubbleVisible_InDetailsPanel=False
+   bColorCommentBubble=True
+   CommentDepth=-8
+   NodePosX=-80
+   NodePosY=-1488
+   NodeWidth=1968
+   NodeHeight=896
+   bCommentBubblePinned=False
+   bCommentBubbleVisible=False
+   NodeComment="Grapple Component"
+   NodeGuid=06DE4BBE4D71ACF1E6724490842E8CBD
+End Object
