@@ -81,29 +81,52 @@ Checkpoints fire at A→B, D→E, pre-F transitions per level (3 per level, 24 t
 
 ## SHINBI COMBAT
 
-### Always-Free Inputs
-| Bind | Action |
-|---|---|
-| X | Light combo |
-| Y | Heavy / Wolf Fang |
-| RT | Ranged |
-| LT | Parry |
-| B | Grab |
-| LB | Modifier (held → ability menu activates) |
-| D-Pad Left | Weapon swap (Greatsword, after L4) |
+## Controls (FINAL — 2026-05-16)
 
-### Spirit Resource (see `docs/Systems/SpiritSystem.md` for full design)
-- Meter: 0–100 base, max 220 with all 8 optional Zone-E puzzles solved
-- Gain: parry +20, grab +10, passive +2/sec in combat
-- Spend: Dash 15, Surge 40, Volley 25, Phantom 50
+### Base Actions
+A   = Jump (AAMS)
+X   = Dodge (AAMS) 
+Y   = Light Attack
+B   = Interact (AAMS)
+LT  = Lock On toggle — strafe when held
+RT  = Ranged Attack
+LB  = Block / Parry (precise timing window)
+RB  = Grab (Grapple Component)
+L3  = Sprint (AAMS)
+R3  = Crouch / Sprint+Crouch = Slide (AAMS)
+DPad Left = Weapon Swap
+DPad Up   = Examine / Lore
 
-### Spirit Abilities
-| Bind | Ability | Unlocks at | Cost |
-|---|---|---|---|
-| LB | Spirit Dash | L1 | 15 |
-| LB+X | Spirit Surge | L3 | 40 |
-| LB+Y | Spirit Volley | L5 | 25 |
-| LB+B | Phantom Strike | L6 | 50 |
+### Hold Actions (1 second hold)
+X hold  = Spirit Surge  (-40 spirit)
+Y hold  = Heavy Attack
+LB hold = Spirit Dash   (-15 spirit)
+RT hold = Spirit Volley (-25 spirit)
+RB hold = Phantom Strike(-50 spirit)
+
+### Parry System
+LB press → 0.2s parry window
+  Hit lands in window → Parry success
+    Spirit +20, enemy stagger
+  No hit → transitions to Block stance
+  Block hit → stamina drains on hit only
+  Stamina 0 → guard break → Shinbi staggers
+
+### Lock On System
+LT Started  → lock on, enter strafe
+LT Completed → unlock, free movement
+Works with ranged for easy targeting
+
+### Stamina (Guard Resource)
+Drains on: blocked hits only
+Passive regen: when not blocking
+Empty: guard break
+
+### Spirit Resource
+Max: 100 (upgrades to 220 via puzzles)
+Gains: parry +20, grab +10, hits passive
+Abilities unlock per level:
+  Dash L1, Surge L3, Volley L5, Phantom L6
 
 ### Greatsword (see `docs/Systems/GreatswordSystem.md`)
 - Unlocks: L4 Zone E Legendary chest
